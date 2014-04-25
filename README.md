@@ -1,4 +1,5 @@
-databox-java-sdk-sample
+Databox Excel Service Example
+
 =======================
 
-Databox Java SDK Sample
+Visit the wiki page (https://github.com/umajeric/databox-excel-service-example/wiki/Setting-up-Jenkins-as-a-build-and-cron-job-executor) to see hot to configure the cron job with Jenkins to push the data to the Databox service.
