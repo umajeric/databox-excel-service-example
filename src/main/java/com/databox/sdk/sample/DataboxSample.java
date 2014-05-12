@@ -17,20 +17,21 @@ public class DataboxSample {
 	private static final Logger logger = LoggerFactory.getLogger(DataboxSample.class);
 
 	public static void main(String[] args) throws Exception {
-		DataSink<DataboxCustomConnection> sink = new DataboxSink();
 
 		if (args.length < 2) {
-			logger.error("API Key and APP ID have to be provided.");
+			logger.error("Access Token and Source Token have to be provided.");
 			return;
 		}
-		String apiKey = args[0];
-		String appId = args[1];
+		String accessToken = args[0];
+		String sourceToken = args[1];
 
-		if (apiKey == null || apiKey.isEmpty() || apiKey == null || apiKey.isEmpty()) {
-			logger.error("API Key and APP ID must not be empty.");
+		if (accessToken == null || accessToken.isEmpty() || accessToken == null || accessToken.isEmpty()) {
+			logger.error("Access Token and Source Token must not be empty.");
 			return;
 		}
-		DataboxCustomConnection connection = new DataboxCustomConnection(apiKey, appId);
+		DataSink<DataboxCustomConnection> sink = new DataboxSink(accessToken);
+
+		DataboxCustomConnection connection = new DataboxCustomConnection(sourceToken);
 		XSLDailyDataProvider xlsxDataProvider = new XSLDailyDataProvider("cycling.xlsx");
 		connection.addDataProvider(xlsxDataProvider);
 
@@ -49,6 +50,8 @@ public class DataboxSample {
 			String logs = sink.getLogs(connection);
 			if (logs != null) {
 				logger.error(logs);
+			} else {
+				logger.error("No logs can be found on server, please check access token and source token.");
 			}
 		} else {
 			logger.info(response.getMessage());
