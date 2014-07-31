@@ -22,14 +22,14 @@ public class DataboxSample {
 			logger.error("Access Token and Source Token have to be provided.");
 			return;
 		}
-		String accessToken = args[0];
+		String userAccessToken = args[0];
 		String sourceToken = args[1];
 
-		if (accessToken == null || accessToken.isEmpty() || sourceToken == null || sourceToken.isEmpty()) {
+		if (userAccessToken == null || userAccessToken.isEmpty() || sourceToken == null || sourceToken.isEmpty()) {
 			logger.error("Access Token and Source Token must not be empty.");
 			return;
 		}
-		DataSink<DataboxCustomConnection> sink = new DataboxSink(accessToken);
+		DataSink<DataboxCustomConnection> sink = new DataboxSink(userAccessToken);
 
 		DataboxCustomConnection connection = new DataboxCustomConnection(sourceToken);
 		XSLDailyDataProvider xlsxDataProvider = new XSLDailyDataProvider("cycling.xlsx");
