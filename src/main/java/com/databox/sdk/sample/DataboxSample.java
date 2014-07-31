@@ -25,7 +25,7 @@ public class DataboxSample {
 		String accessToken = args[0];
 		String sourceToken = args[1];
 
-		if (accessToken == null || accessToken.isEmpty() || accessToken == null || accessToken.isEmpty()) {
+		if (accessToken == null || accessToken.isEmpty() || sourceToken == null || sourceToken.isEmpty()) {
 			logger.error("Access Token and Source Token must not be empty.");
 			return;
 		}
